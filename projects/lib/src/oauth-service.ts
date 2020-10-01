@@ -2374,7 +2374,7 @@ export class OAuthService extends AuthConfig implements OnDestroy {
         .replace(/\{\{id_token\}\}/, id_token)
         .replace(/\{\{client_id\}\}/, this.clientId);
     } else {
-      let params = new HttpParams();
+      let params = new HttpParams({ encoder: new WebHttpUrlEncodingCodec() });
 
       if (id_token) {
         params = params.set('id_token_hint', id_token);
